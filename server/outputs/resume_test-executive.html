@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #fff;
+        }
+        
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 50px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 25px;
+            border-bottom: 2px solid #1a1a1a;
+        }
+        
+        .name {
+            font-size: 2.8em;
+            font-weight: normal;
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+        
+        .contact {
+            font-size: 1.1em;
+            color: #666;
+            font-style: italic;
+        }
+        
+        .section {
+            margin-bottom: 35px;
+        }
+        
+        .section-title {
+            font-size: 1.4em;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            color: #1a1a1a;
+            text-align: center;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 1px;
+            background: #1a1a1a;
+        }
+        
+        .summary {
+            font-size: 1.2em;
+            line-height: 1.8;
+            text-align: justify;
+            font-style: italic;
+            color: #333;
+        }
+        
+        .experience-item {
+            margin-bottom: 30px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .experience-item:last-child {
+            border-bottom: none;
+        }
+        
+        .job-header {
+            margin-bottom: 10px;
+        }
+        
+        .job-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #1a1a1a;
+            margin-bottom: 5px;
+        }
+        
+        .company-duration {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .company {
+            font-size: 1.1em;
+            font-weight: normal;
+            font-style: italic;
+            color: #444;
+        }
+        
+        .duration {
+            font-size: 1em;
+            color: #666;
+            font-weight: normal;
+        }
+        
+        .responsibilities {
+            list-style: none;
+            margin-top: 10px;
+        }
+        
+        .responsibilities li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 8px;
+            line-height: 1.7;
+            color: #333;
+        }
+        
+        .responsibilities li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #1a1a1a;
+            font-weight: bold;
+        }
+        
+        .education-item {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .degree {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #1a1a1a;
+            margin-bottom: 5px;
+        }
+        
+        .institution {
+            font-size: 1.1em;
+            font-style: italic;
+            color: #444;
+            margin-bottom: 5px;
+        }
+        
+        .year {
+            color: #666;
+        }
+        
+        .skills-container {
+            text-align: center;
+            line-height: 2;
+        }
+        
+        .skills-container span {
+            font-size: 1.1em;
+            color: #333;
+        }
+        
+        .skills-separator {
+            margin: 0 10px;
+            color: #666;
+        }
+        
+        .project-item {
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        
+        .project-name {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+        }
+        
+        .project-description {
+            color: #333;
+            margin-bottom: 10px;
+            line-height: 1.7;
+            font-style: italic;
+        }
+        
+        .project-tech {
+            font-size: 1em;
+            color: #666;
+        }
+        
+        .match-score {
+            background: #1a1a1a;
+            color: white;
+            padding: 25px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .match-score-label {
+            font-size: 1.1em;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+        
+        .match-score-number {
+            font-size: 3em;
+            font-weight: bold;
+        }
+        
+        @media print {
+            .container {
+                padding: 30px;
+            }
+            .match-score {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .company-duration {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .duration {
+                margin-top: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <div class="match-score">
+            <div class="match-score-label">Executive Match Score</div>
+            <div class="match-score-number">85%</div>
+        </div>
+        
+        
+        <div class="header">
+            <h1 class="name">Executive Resume</h1>
+            <div class="contact">Leadership Profile Enhanced by AI</div>
+        </div>
+        
+        
+        <div class="section">
+            <h2 class="section-title">Executive Summary</h2>
+            <div class="summary">Experienced software engineer with 5+ years developing web applications using React, Node.js, and Python. Passionate about creating efficient, scalable solutions and mentoring junior developers. Experienced with software engineer.</div>
+        </div>
+        
+        
+        
+        <div class="section">
+            <h2 class="section-title">Professional Experience</h2>
+            
+            <div class="experience-item">
+                <div class="job-header">
+                    <div class="job-title">Senior Software Engineer</div>
+                    <div class="company-duration">
+                        <div class="company">Tech Corp</div>
+                        <div class="duration">2021 - Present</div>
+                    </div>
+                </div>
+                
+                <ul class="responsibilities">
+                    
+                    <li>Led development of React-based dashboard serving 10,000+ users</li>
+                    
+                    <li>Implemented REST APIs using Node.js and Express, improving response times by 40%</li>
+                    
+                    <li>Mentored 3 junior developers and conducted code reviews (improved efficiency by 20%)</li>
+                    
+                    <li>Collaborated with product managers to define technical requirements (improved efficiency by 20%)</li>
+                    
+                </ul>
+                
+            </div>
+            
+            <div class="experience-item">
+                <div class="job-header">
+                    <div class="job-title">Software Engineer</div>
+                    <div class="company-duration">
+                        <div class="company">StartupXYZ</div>
+                        <div class="duration">2019 - 2021</div>
+                    </div>
+                </div>
+                
+                <ul class="responsibilities">
+                    
+                    <li>Built responsive web applications using React and TypeScript (improved efficiency by 20%)</li>
+                    
+                    <li>Developed Python scripts for data processing and automation (improved efficiency by 20%)</li>
+                    
+                    <li>Integrated third-party APIs and payment systems (improved efficiency by 20%)</li>
+                    
+                    <li>Participated in agile development processes and sprint planning (improved efficiency by 20%)</li>
+                    
+                </ul>
+                
+            </div>
+            
+        </div>
+        
+        
+        
+        <div class="section">
+            <h2 class="section-title">Education</h2>
+            
+            <div class="education-item">
+                <div class="degree">Bachelor of Science in Computer Science</div>
+                <div class="institution">University of Technology</div>
+                
+                <div class="year">2019</div>
+                
+            </div>
+            
+        </div>
+        
+        
+        
+        <div class="section">
+            <h2 class="section-title">Core Competencies</h2>
+            <div class="skills-container">
+                
+                <span>AWS</span>
+                <span class="skills-separator">|</span>
+                
+                <span>CSS3</span>
+                <span class="skills-separator">|</span>
+                
+                <span>Django</span>
+                <span class="skills-separator">|</span>
+                
+                <span>Docker</span>
+                <span class="skills-separator">|</span>
+                
+                <span>Express</span>
+                <span class="skills-separator">|</span>
+                
+                <span>Flask</span>
+                <span class="skills-separator">|</span>
+                
+                <span>Git</span>
+                <span class="skills-separator">|</span>
+                
+                <span>HTML5</span>
+                <span class="skills-separator">|</span>
+                
+                <span>Java</span>
+                <span class="skills-separator">|</span>
+                
+                <span>JavaScript</span>
+                <span class="skills-separator">|</span>
+                
+                <span>Jenkins</span>
+                <span class="skills-separator">|</span>
+                
+                <span>MongoDB</span>
+                <span class="skills-separator">|</span>
+                
+                <span>Node.js</span>
+                <span class="skills-separator">|</span>
+                
+                <span>PostgreSQL</span>
+                <span class="skills-separator">|</span>
+                
+                <span>Python</span>
+                <span class="skills-separator">|</span>
+                
+                <span>React</span>
+                <span class="skills-separator">|</span>
+                
+                <span>Redis</span>
+                <span class="skills-separator">|</span>
+                
+                <span>Tailwind CSS</span>
+                <span class="skills-separator">|</span>
+                
+                <span>TypeScript</span>
+                
+                
+            </div>
+        </div>
+        
+        
+        
+        <div class="section">
+            <h2 class="section-title">Strategic Initiatives</h2>
+            
+            <div class="project-item">
+                <div class="project-name">E-commerce Platform</div>
+                
+                <div class="project-description"> Built full-stack e-commerce application using React and Node.js Implemented user authentication, payment processing, and inventory management</div>
+                
+                
+                <div class="project-tech">Technologies: React, Express, PostgreSQL, Stripe API</div>
+                
+            </div>
+            
+            <div class="project-item">
+                <div class="project-name">Task Management App</div>
+                
+                <div class="project-description"> Developed collaborative task management application Features include real-time updates, file sharing, and team collaboration</div>
+                
+                
+                <div class="project-tech">Technologies: React, Socket.io, MongoDB</div>
+                
+            </div>
+            
+        </div>
+        
+    </div>
+</body>
+</html>

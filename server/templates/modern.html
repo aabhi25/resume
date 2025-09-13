@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fff;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #2563eb;
+        }
+        
+        .name {
+            font-size: 2.5em;
+            font-weight: 700;
+            color: #1e40af;
+            margin-bottom: 10px;
+        }
+        
+        .contact {
+            color: #6b7280;
+            font-size: 1.1em;
+        }
+        
+        .section {
+            margin-bottom: 30px;
+        }
+        
+        .section-title {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #1e40af;
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #e5e7eb;
+        }
+        
+        .summary {
+            font-size: 1.1em;
+            line-height: 1.7;
+            color: #4b5563;
+        }
+        
+        .experience-item {
+            margin-bottom: 25px;
+        }
+        
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        
+        .job-title {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #1f2937;
+        }
+        
+        .company {
+            font-weight: 500;
+            color: #2563eb;
+        }
+        
+        .duration {
+            color: #6b7280;
+            font-style: italic;
+        }
+        
+        .responsibilities {
+            list-style: none;
+            margin-top: 10px;
+        }
+        
+        .responsibilities li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 5px;
+            color: #4b5563;
+        }
+        
+        .responsibilities li:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: #2563eb;
+            font-weight: bold;
+        }
+        
+        .education-item {
+            margin-bottom: 15px;
+        }
+        
+        .degree {
+            font-weight: 600;
+            color: #1f2937;
+        }
+        
+        .institution {
+            color: #2563eb;
+        }
+        
+        .year {
+            color: #6b7280;
+            float: right;
+        }
+        
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .skill-tag {
+            background: #eff6ff;
+            color: #1e40af;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 500;
+            border: 1px solid #dbeafe;
+        }
+        
+        .project-item {
+            margin-bottom: 20px;
+        }
+        
+        .project-name {
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 5px;
+        }
+        
+        .project-description {
+            color: #4b5563;
+            margin-bottom: 8px;
+        }
+        
+        .project-tech {
+            font-size: 0.9em;
+            color: #6b7280;
+            font-style: italic;
+        }
+        
+        .match-score {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .match-score-number {
+            font-size: 2em;
+            font-weight: bold;
+        }
+        
+        @media print {
+            .container {
+                padding: 20px;
+            }
+            .match-score {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        {% if match_score and match_score > 0 %}
+        <div class="match-score">
+            <div>Job Match Score</div>
+            <div class="match-score-number">{{ match_score }}%</div>
+        </div>
+        {% endif %}
+        
+        <div class="header">
+            <h1 class="name">Professional Resume</h1>
+            <div class="contact">Enhanced with AI</div>
+        </div>
+        
+        {% if data.summary %}
+        <div class="section">
+            <h2 class="section-title">Professional Summary</h2>
+            <div class="summary">{{ data.summary }}</div>
+        </div>
+        {% endif %}
+        
+        {% if data.workExperience and data.workExperience|length > 0 %}
+        <div class="section">
+            <h2 class="section-title">Work Experience</h2>
+            {% for exp in data.workExperience %}
+            <div class="experience-item">
+                <div class="job-header">
+                    <div>
+                        <div class="job-title">{{ exp.position or 'Position' }}</div>
+                        <div class="company">{{ exp.company or 'Company' }}</div>
+                    </div>
+                    <div class="duration">{{ exp.duration or '' }}</div>
+                </div>
+                {% if exp.responsibilities and exp.responsibilities|length > 0 %}
+                <ul class="responsibilities">
+                    {% for resp in exp.responsibilities %}
+                    <li>{{ resp }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        
+        {% if data.education and data.education|length > 0 %}
+        <div class="section">
+            <h2 class="section-title">Education</h2>
+            {% for edu in data.education %}
+            <div class="education-item">
+                <div class="degree">{{ edu.degree or 'Degree' }}</div>
+                <div class="institution">{{ edu.institution or 'Institution' }}</div>
+                {% if edu.year %}
+                <div class="year">{{ edu.year }}</div>
+                {% endif %}
+                <div style="clear: both;"></div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        
+        {% if data.skills and data.skills|length > 0 %}
+        <div class="section">
+            <h2 class="section-title">Skills</h2>
+            <div class="skills-container">
+                {% for skill in data.skills %}
+                <span class="skill-tag">{{ skill }}</span>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+        
+        {% if data.projects and data.projects|length > 0 %}
+        <div class="section">
+            <h2 class="section-title">Projects</h2>
+            {% for project in data.projects %}
+            <div class="project-item">
+                <div class="project-name">{{ project.name or 'Project' }}</div>
+                {% if project.description %}
+                <div class="project-description">{{ project.description }}</div>
+                {% endif %}
+                {% if project.technologies and project.technologies|length > 0 %}
+                <div class="project-tech">Technologies: {{ project.technologies|join(', ') }}</div>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>

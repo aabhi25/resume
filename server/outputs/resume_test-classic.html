@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            line-height: 1.6;
+            color: #000;
+            background: #fff;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #000;
+        }
+        
+        .name {
+            font-size: 2.2em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .contact {
+            font-size: 1em;
+        }
+        
+        .section {
+            margin-bottom: 25px;
+        }
+        
+        .section-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            padding-bottom: 3px;
+            border-bottom: 1px solid #000;
+            letter-spacing: 1px;
+        }
+        
+        .summary {
+            font-size: 1em;
+            line-height: 1.6;
+            text-align: justify;
+        }
+        
+        .experience-item {
+            margin-bottom: 20px;
+        }
+        
+        .job-header {
+            margin-bottom: 5px;
+        }
+        
+        .job-title {
+            font-size: 1.1em;
+            font-weight: bold;
+            display: inline;
+        }
+        
+        .company {
+            font-weight: bold;
+            font-style: italic;
+            display: inline;
+        }
+        
+        .duration {
+            float: right;
+            font-style: italic;
+        }
+        
+        .responsibilities {
+            list-style: disc;
+            margin-left: 20px;
+            margin-top: 5px;
+        }
+        
+        .responsibilities li {
+            margin-bottom: 3px;
+        }
+        
+        .education-item {
+            margin-bottom: 10px;
+        }
+        
+        .degree {
+            font-weight: bold;
+            display: inline;
+        }
+        
+        .institution {
+            font-style: italic;
+            display: inline;
+        }
+        
+        .year {
+            float: right;
+        }
+        
+        .skills-list {
+            line-height: 1.8;
+        }
+        
+        .project-item {
+            margin-bottom: 15px;
+        }
+        
+        .project-name {
+            font-weight: bold;
+            margin-bottom: 3px;
+        }
+        
+        .project-description {
+            margin-bottom: 5px;
+            text-align: justify;
+        }
+        
+        .project-tech {
+            font-style: italic;
+            font-size: 0.95em;
+        }
+        
+        @media print {
+            .container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="name">Professional Resume</h1>
+            <div class="contact">Enhanced with AI Technology</div>
+        </div>
+        
+        
+        <div class="section">
+            <h2 class="section-title">Objective</h2>
+            <div class="summary">Experienced software engineer with 5+ years developing web applications using React, Node.js, and Python. Passionate about creating efficient, scalable solutions and mentoring junior developers. Experienced with software engineer.</div>
+        </div>
+        
+        
+        
+        <div class="section">
+            <h2 class="section-title">Professional Experience</h2>
+            
+            <div class="experience-item">
+                <div class="job-header">
+                    <span class="job-title">Senior Software Engineer</span>
+                    <span> - </span>
+                    <span class="company">Tech Corp</span>
+                    <span class="duration">2021 - Present</span>
+                    <div style="clear: both;"></div>
+                </div>
+                
+                <ul class="responsibilities">
+                    
+                    <li>Led development of React-based dashboard serving 10,000+ users</li>
+                    
+                    <li>Implemented REST APIs using Node.js and Express, improving response times by 40%</li>
+                    
+                    <li>Mentored 3 junior developers and conducted code reviews (improved efficiency by 20%)</li>
+                    
+                    <li>Collaborated with product managers to define technical requirements (improved efficiency by 20%)</li>
+                    
+                </ul>
+                
+            </div>
+            
+            <div class="experience-item">
+                <div class="job-header">
+                    <span class="job-title">Software Engineer</span>
+                    <span> - </span>
+                    <span class="company">StartupXYZ</span>
+                    <span class="duration">2019 - 2021</span>
+                    <div style="clear: both;"></div>
+                </div>
+                
+                <ul class="responsibilities">
+                    
+                    <li>Built responsive web applications using React and TypeScript (improved efficiency by 20%)</li>
+                    
+                    <li>Developed Python scripts for data processing and automation (improved efficiency by 20%)</li>
+                    
+                    <li>Integrated third-party APIs and payment systems (improved efficiency by 20%)</li>
+                    
+                    <li>Participated in agile development processes and sprint planning (improved efficiency by 20%)</li>
+                    
+                </ul>
+                
+            </div>
+            
+        </div>
+        
+        
+        
+        <div class="section">
+            <h2 class="section-title">Education</h2>
+            
+            <div class="education-item">
+                <span class="degree">Bachelor of Science in Computer Science</span>
+                <span> - </span>
+                <span class="institution">University of Technology</span>
+                
+                <span class="year">2019</span>
+                
+                <div style="clear: both;"></div>
+            </div>
+            
+        </div>
+        
+        
+        
+        <div class="section">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-list">AWS, CSS3, Django, Docker, Express, Flask, Git, HTML5, Java, JavaScript, Jenkins, MongoDB, Node.js, PostgreSQL, Python, React, Redis, Tailwind CSS, TypeScript</div>
+        </div>
+        
+        
+        
+        <div class="section">
+            <h2 class="section-title">Notable Projects</h2>
+            
+            <div class="project-item">
+                <div class="project-name">E-commerce Platform</div>
+                
+                <div class="project-description"> Built full-stack e-commerce application using React and Node.js Implemented user authentication, payment processing, and inventory management</div>
+                
+                
+                <div class="project-tech">Technologies Used: React, Express, PostgreSQL, Stripe API</div>
+                
+            </div>
+            
+            <div class="project-item">
+                <div class="project-name">Task Management App</div>
+                
+                <div class="project-description"> Developed collaborative task management application Features include real-time updates, file sharing, and team collaboration</div>
+                
+                
+                <div class="project-tech">Technologies Used: React, Socket.io, MongoDB</div>
+                
+            </div>
+            
+        </div>
+        
+    </div>
+</body>
+</html>

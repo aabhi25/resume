@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+        }
+        
+        .name {
+            font-size: 2.8em;
+            font-weight: 300;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .contact {
+            font-size: 1.1em;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .section {
+            margin-bottom: 35px;
+        }
+        
+        .section-title {
+            font-size: 1.6em;
+            font-weight: 600;
+            color: #667eea;
+            margin-bottom: 20px;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .section-title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 15px;
+            height: 15px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+        }
+        
+        .summary {
+            font-size: 1.1em;
+            line-height: 1.7;
+            color: #555;
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .experience-item {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .job-title {
+            font-size: 1.3em;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .company {
+            font-weight: 500;
+            color: #667eea;
+            font-size: 1.1em;
+        }
+        
+        .duration {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 500;
+        }
+        
+        .responsibilities {
+            list-style: none;
+            margin-top: 15px;
+        }
+        
+        .responsibilities li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 8px;
+            color: #555;
+        }
+        
+        .responsibilities li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        
+        .education-item {
+            margin-bottom: 15px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #764ba2;
+        }
+        
+        .degree {
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 1.1em;
+        }
+        
+        .institution {
+            color: #667eea;
+            font-weight: 500;
+        }
+        
+        .year {
+            color: #888;
+            float: right;
+            font-style: italic;
+        }
+        
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        
+        .skill-tag {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.9em;
+            font-weight: 500;
+            box-shadow: 0 3px 10px rgba(102, 126, 234, 0.3);
+            transition: transform 0.2s ease;
+        }
+        
+        .skill-tag:hover {
+            transform: translateY(-2px);
+        }
+        
+        .project-item {
+            margin-bottom: 20px;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        
+        .project-name {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 8px;
+            font-size: 1.2em;
+        }
+        
+        .project-description {
+            color: #555;
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+        
+        .project-tech {
+            font-size: 0.9em;
+            color: #667eea;
+            font-weight: 500;
+        }
+        
+        .match-score {
+            background: linear-gradient(135deg, #00c851, #007e33);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin: -40px -40px 30px -40px;
+        }
+        
+        .match-score-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        @media print {
+            body {
+                background: #fff;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+            }
+            .match-score {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .job-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .duration {
+                margin-top: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="name">Creative Resume</h1>
+            <div class="contact">AI-Enhanced Professional Profile</div>
+        </div>
+        
+        <div class="content">
+            
+            <div class="match-score">
+                <div>Job Compatibility Score</div>
+                <div class="match-score-number">85%</div>
+            </div>
+            
+            
+            
+            <div class="section">
+                <h2 class="section-title">Professional Summary</h2>
+                <div class="summary">Experienced software engineer with 5+ years developing web applications using React, Node.js, and Python. Passionate about creating efficient, scalable solutions and mentoring junior developers. Experienced with software engineer.</div>
+            </div>
+            
+            
+            
+            <div class="section">
+                <h2 class="section-title">Work Experience</h2>
+                
+                <div class="experience-item">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">Senior Software Engineer</div>
+                            <div class="company">Tech Corp</div>
+                        </div>
+                        <div class="duration">2021 - Present</div>
+                    </div>
+                    
+                    <ul class="responsibilities">
+                        
+                        <li>Led development of React-based dashboard serving 10,000+ users</li>
+                        
+                        <li>Implemented REST APIs using Node.js and Express, improving response times by 40%</li>
+                        
+                        <li>Mentored 3 junior developers and conducted code reviews (improved efficiency by 20%)</li>
+                        
+                        <li>Collaborated with product managers to define technical requirements (improved efficiency by 20%)</li>
+                        
+                    </ul>
+                    
+                </div>
+                
+                <div class="experience-item">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">Software Engineer</div>
+                            <div class="company">StartupXYZ</div>
+                        </div>
+                        <div class="duration">2019 - 2021</div>
+                    </div>
+                    
+                    <ul class="responsibilities">
+                        
+                        <li>Built responsive web applications using React and TypeScript (improved efficiency by 20%)</li>
+                        
+                        <li>Developed Python scripts for data processing and automation (improved efficiency by 20%)</li>
+                        
+                        <li>Integrated third-party APIs and payment systems (improved efficiency by 20%)</li>
+                        
+                        <li>Participated in agile development processes and sprint planning (improved efficiency by 20%)</li>
+                        
+                    </ul>
+                    
+                </div>
+                
+            </div>
+            
+            
+            
+            <div class="section">
+                <h2 class="section-title">Education</h2>
+                
+                <div class="education-item">
+                    <div class="degree">Bachelor of Science in Computer Science</div>
+                    <div class="institution">University of Technology</div>
+                    
+                    <div class="year">2019</div>
+                    
+                    <div style="clear: both;"></div>
+                </div>
+                
+            </div>
+            
+            
+            
+            <div class="section">
+                <h2 class="section-title">Skills & Technologies</h2>
+                <div class="skills-container">
+                    
+                    <span class="skill-tag">AWS</span>
+                    
+                    <span class="skill-tag">CSS3</span>
+                    
+                    <span class="skill-tag">Django</span>
+                    
+                    <span class="skill-tag">Docker</span>
+                    
+                    <span class="skill-tag">Express</span>
+                    
+                    <span class="skill-tag">Flask</span>
+                    
+                    <span class="skill-tag">Git</span>
+                    
+                    <span class="skill-tag">HTML5</span>
+                    
+                    <span class="skill-tag">Java</span>
+                    
+                    <span class="skill-tag">JavaScript</span>
+                    
+                    <span class="skill-tag">Jenkins</span>
+                    
+                    <span class="skill-tag">MongoDB</span>
+                    
+                    <span class="skill-tag">Node.js</span>
+                    
+                    <span class="skill-tag">PostgreSQL</span>
+                    
+                    <span class="skill-tag">Python</span>
+                    
+                    <span class="skill-tag">React</span>
+                    
+                    <span class="skill-tag">Redis</span>
+                    
+                    <span class="skill-tag">Tailwind CSS</span>
+                    
+                    <span class="skill-tag">TypeScript</span>
+                    
+                </div>
+            </div>
+            
+            
+            
+            <div class="section">
+                <h2 class="section-title">Featured Projects</h2>
+                
+                <div class="project-item">
+                    <div class="project-name">E-commerce Platform</div>
+                    
+                    <div class="project-description"> Built full-stack e-commerce application using React and Node.js Implemented user authentication, payment processing, and inventory management</div>
+                    
+                    
+                    <div class="project-tech">Built with: React, Express, PostgreSQL, Stripe API</div>
+                    
+                </div>
+                
+                <div class="project-item">
+                    <div class="project-name">Task Management App</div>
+                    
+                    <div class="project-description"> Developed collaborative task management application Features include real-time updates, file sharing, and team collaboration</div>
+                    
+                    
+                    <div class="project-tech">Built with: React, Socket.io, MongoDB</div>
+                    
+                </div>
+                
+            </div>
+            
+        </div>
+    </div>
+</body>
+</html>

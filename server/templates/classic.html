@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            line-height: 1.6;
+            color: #000;
+            background: #fff;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #000;
+        }
+        
+        .name {
+            font-size: 2.2em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .contact {
+            font-size: 1em;
+        }
+        
+        .section {
+            margin-bottom: 25px;
+        }
+        
+        .section-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            padding-bottom: 3px;
+            border-bottom: 1px solid #000;
+            letter-spacing: 1px;
+        }
+        
+        .summary {
+            font-size: 1em;
+            line-height: 1.6;
+            text-align: justify;
+        }
+        
+        .experience-item {
+            margin-bottom: 20px;
+        }
+        
+        .job-header {
+            margin-bottom: 5px;
+        }
+        
+        .job-title {
+            font-size: 1.1em;
+            font-weight: bold;
+            display: inline;
+        }
+        
+        .company {
+            font-weight: bold;
+            font-style: italic;
+            display: inline;
+        }
+        
+        .duration {
+            float: right;
+            font-style: italic;
+        }
+        
+        .responsibilities {
+            list-style: disc;
+            margin-left: 20px;
+            margin-top: 5px;
+        }
+        
+        .responsibilities li {
+            margin-bottom: 3px;
+        }
+        
+        .education-item {
+            margin-bottom: 10px;
+        }
+        
+        .degree {
+            font-weight: bold;
+            display: inline;
+        }
+        
+        .institution {
+            font-style: italic;
+            display: inline;
+        }
+        
+        .year {
+            float: right;
+        }
+        
+        .skills-list {
+            line-height: 1.8;
+        }
+        
+        .project-item {
+            margin-bottom: 15px;
+        }
+        
+        .project-name {
+            font-weight: bold;
+            margin-bottom: 3px;
+        }
+        
+        .project-description {
+            margin-bottom: 5px;
+            text-align: justify;
+        }
+        
+        .project-tech {
+            font-style: italic;
+            font-size: 0.95em;
+        }
+        
+        @media print {
+            .container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="name">Professional Resume</h1>
+            <div class="contact">Enhanced with AI Technology</div>
+        </div>
+        
+        {% if data.summary %}
+        <div class="section">
+            <h2 class="section-title">Objective</h2>
+            <div class="summary">{{ data.summary }}</div>
+        </div>
+        {% endif %}
+        
+        {% if data.workExperience and data.workExperience|length > 0 %}
+        <div class="section">
+            <h2 class="section-title">Professional Experience</h2>
+            {% for exp in data.workExperience %}
+            <div class="experience-item">
+                <div class="job-header">
+                    <span class="job-title">{{ exp.position or 'Position' }}</span>
+                    <span> - </span>
+                    <span class="company">{{ exp.company or 'Company' }}</span>
+                    <span class="duration">{{ exp.duration or '' }}</span>
+                    <div style="clear: both;"></div>
+                </div>
+                {% if exp.responsibilities and exp.responsibilities|length > 0 %}
+                <ul class="responsibilities">
+                    {% for resp in exp.responsibilities %}
+                    <li>{{ resp }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        
+        {% if data.education and data.education|length > 0 %}
+        <div class="section">
+            <h2 class="section-title">Education</h2>
+            {% for edu in data.education %}
+            <div class="education-item">
+                <span class="degree">{{ edu.degree or 'Degree' }}</span>
+                <span> - </span>
+                <span class="institution">{{ edu.institution or 'Institution' }}</span>
+                {% if edu.year %}
+                <span class="year">{{ edu.year }}</span>
+                {% endif %}
+                <div style="clear: both;"></div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        
+        {% if data.skills and data.skills|length > 0 %}
+        <div class="section">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-list">{{ data.skills|join(', ') }}</div>
+        </div>
+        {% endif %}
+        
+        {% if data.projects and data.projects|length > 0 %}
+        <div class="section">
+            <h2 class="section-title">Notable Projects</h2>
+            {% for project in data.projects %}
+            <div class="project-item">
+                <div class="project-name">{{ project.name or 'Project' }}</div>
+                {% if project.description %}
+                <div class="project-description">{{ project.description }}</div>
+                {% endif %}
+                {% if project.technologies and project.technologies|length > 0 %}
+                <div class="project-tech">Technologies Used: {{ project.technologies|join(', ') }}</div>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
